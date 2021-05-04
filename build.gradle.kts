@@ -8,6 +8,8 @@ val policy: String by System.getProperties()
 val indexes: String by System.getProperties()
 val indexesJs: String by System.getProperties()
 
+val refunkVersion: String by System.getProperties()
+
 group = "com.compiler.server"
 version = "$kotlinVersion-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
@@ -55,6 +57,7 @@ allprojects {
         maven("https://kotlin.bintray.com/kotlin-ide-plugin-dependencies")
         maven("https://cache-redirector.jetbrains.com/jetbrains.bintray.com/intellij-third-party-dependencies")
         maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-ide-plugin-dependencies")
+        maven("https://jitpack.io")
     }
     afterEvaluate {
         dependencies {
@@ -81,6 +84,8 @@ dependencies {
     kotlinDependency("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
     kotlinDependency("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.0-RC")
     kotlinJsDependency("org.jetbrains.kotlin:kotlin-stdlib-js:$kotlinVersion")
+    // Custom libraries
+    kotlinDependency("eu.yeger:refunk:$refunkVersion")
 
     annotationProcessor("org.springframework:spring-context-indexer")
     implementation("org.springframework.boot:spring-boot-starter-web")
